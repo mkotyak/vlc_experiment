@@ -1,10 +1,9 @@
 import SwiftUI
 
 struct ContentView: View {
-    var mediaURL: URL? = URL(string: "https://stream.ecable.tv/afrobeats/index.m3u8")
+    let player: VLCPlayer
 
     var body: some View {
-        VLCPlayerView(mediaUrl: mediaURL)
-            .ignoresSafeArea()
+        player.ignoresSafeArea()
     }
 }

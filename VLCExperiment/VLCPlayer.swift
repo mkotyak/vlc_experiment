@@ -1,8 +1,8 @@
 import MobileVLCKit
 import SwiftUI
 
-struct VLCPlayerView {
-    private let mediaPlayer = VLCMediaPlayer()
+struct VLCPlayer {
+    private let player: VLCMediaPlayer = .init()
     private var mediaUrl: URL?
 
     init(mediaUrl: URL?) {
@@ -12,21 +12,22 @@ struct VLCPlayerView {
 
 // MARK: - UIViewRepresentable
 
-extension VLCPlayerView: UIViewRepresentable {
+extension VLCPlayer: UIViewRepresentable {
     typealias UIViewType = UIView
 
     func makeUIView(context: Context) -> UIView {
         let uiView = UIView()
-        mediaPlayer.drawable = uiView
+        player.drawable = uiView
+
         return uiView
     }
 
     func updateUIView(_ uiView: UIView, context: Context) {
         if let url = mediaUrl {
-            mediaPlayer.media = VLCMedia(url: url)
-            mediaPlayer.play()
+            player.media = VLCMedia(url: url)
+            player.play()
         } else {
-            mediaPlayer.stop()
+            player.stop()
         }
     }
 }

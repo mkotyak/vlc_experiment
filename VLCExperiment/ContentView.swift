@@ -1,24 +1,10 @@
-//
-//  ContentView.swift
-//  VLCExperiment
-//
-//  Created by Maria Kotyak on 22/10/2023.
-//
-
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
-    }
-}
+    var mediaURL: URL? = URL(string: "https://stream.ecable.tv/afrobeats/index.m3u8")
 
-#Preview {
-    ContentView()
+    var body: some View {
+        VLCPlayerView(mediaUrl: mediaURL)
+            .ignoresSafeArea()
+    }
 }
